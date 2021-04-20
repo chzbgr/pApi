@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul.a {
+            background: lightskyblue;
+            list-style-type: square;
+            list-style-position: inside;
+            padding: 10px 10px 10px 50px;
+        }
+
+        li {
+            background: #f1f1f1;
+            padding: 10px 10px 10px 20px;
+            margin: 10px 10px 10px 10px;
+        }
+
+        h1.title {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+<h1 class="title">iteyes API 자동화 시스템</h1>
+<ul class="a">
+    <li>동네 예보 조회 서비스 API</li>
+    <li>K-MOOC 강좌 정보 API</li>
+    <li>스쿨존 어린이 사고 정보 API</li>
+    <li>지하철 호선&역 별 승하차 정보 API</li>
+    <li>서울시 코로나19 발생 동향</li>
+</ul>
+
+<input type="button" value="팝업창" onclick="'showPopup()"/>
+
+<h3></h3>
+
+<script>
+    function showPopup() {
+        window.open("08_2_popup.html", "a", "width=400, height=300, left=100, top=50");
+    }
+</script>
+
+</body>
+</html>
