@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.store.tbo.domain.Apires1;
+import com.example.demo.store.tbo.domain.Apires1_Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,8 +20,8 @@ public class api1SaveRequestDto {
     private int Exam_Cnt;
     private int Death_Cnt;
 
-    public Apires1 toEntity(){
-        return Apires1.builder()
+    public Apires1_Entity toEntity(){
+        return Apires1_Entity.builder()
                 .STATE_Dt(STATE_Dt)
                 .STATE_Time(STATE_Time)
                 .Load_time(Load_time)

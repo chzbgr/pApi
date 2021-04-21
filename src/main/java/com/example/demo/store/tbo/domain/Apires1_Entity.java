@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @Getter
 @Entity
 
-public class Apires1 {
+public class Apires1_Entity {
 
     @Id
     @GeneratedValue
@@ -42,8 +42,8 @@ public class Apires1 {
 
 
     @Builder
-    public Apires1(String STATE_Dt,String STATE_Time,String Load_time,int totalCount,int SEQ,int Decide_Cnt,int Clear_Cnt
-    ,int Exam_Cnt,int Death_Cnt){
+    public Apires1_Entity(String STATE_Dt, String STATE_Time, String Load_time, int totalCount, int SEQ, int Decide_Cnt, int Clear_Cnt
+    , int Exam_Cnt, int Death_Cnt){
         this.STATE_Dt=STATE_Dt;
         this.STATE_Time=STATE_Time;
         this.Load_time=Load_time;

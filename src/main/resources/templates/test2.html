@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>입력</title>
+</head>
+<body>
+<div>
+  <h2> <보건복지부_코로나19 감염_현황> </h2>
+    <table border=2>
+        <th>항목명(국문)</th>
+        <th>항목명(영문)</th>
+        <th>항목구분</th>
+        <th>샘플데이터</th>
+        <th>항목설명</th>
+        <th>값을 입력하세요</th>
+    </tr>
+      <tr th:each="parameters: ${parameters}">
+          <td th:text="${parameters.Api_Kor}"></td>
+          <td th:text="${parameters.Api_Eng}"></td>
+          <td th:text="${parameters.Option}"></td>
+          <td th:text="${parameters.Sample}"></td>
+          <td th:text="${parameters.des}"></td>
+          <td input type="text" th:value="${parameters}"></td>
+      </tr>
+  </table>
+</div>
+
+</body>
+</html>

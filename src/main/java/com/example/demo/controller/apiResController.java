@@ -13,11 +13,13 @@ public class apiResController {
     private Api1Repository api1Repository;
 
     @GetMapping("api1")
-    public String hello(){
+    public String apires() {
+
+
         return "hio";
     }
 
-    // api1 포스트 매핑 시 레퍼지토리에 저장 내용 저장
+    // api1 포스트 매핑 시 레퍼지토리에 내용 저장
     @PostMapping("api1")
     public void saveApi1(@RequestBody api1SaveRequestDto dto){
         api1Repository.save(dto.toEntity());
