@@ -9,6 +9,7 @@ import com.example.demo.store.tbo.ParameterEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,6 +29,7 @@ public class MainController {
     public String start() {
 //      ApiEntity가 아닌 dto의 API로 생성한다음 save해야 한다!
         Api api5_list = new Api();
+        api5_list.setId("API_5");
         api5_list.setApiKor("서울특별시 코로나19 백신 예방접종 현황");
         api5_list.setDes("서울시 기준의 코로나19 백신 접종자 관련 정보 현황");
         api5_list.setServiceKey("6f6a4a6747716c7337326b67596165");
@@ -47,8 +49,9 @@ public class MainController {
     }
 
     @RequestMapping(value = "/API5")
-    public String api5() {
+    public String api5(Model model) {
         Parameter parameter1 = new Parameter();
+        parameter1.setId("API_5");
         parameter1.setNameEng("START_INDEX");
         parameter1.setNameKor("요청시작위치");
         parameter1.setType("INTEGER(필수)");
@@ -56,6 +59,7 @@ public class MainController {
         parameterRepository.save(parameter1.toEntity());
 
         Parameter parameter2 = new Parameter();
+        parameter2.setId("API_5");
         parameter2.setNameEng("END_INDEX");
         parameter2.setNameKor("요청종료위치");
         parameter2.setType("INTEGER(필수)");
@@ -66,6 +70,9 @@ public class MainController {
         // TODO 2. return HTML :: #result_data
 
         List<Parameter> parameters = new ArrayList<>();
+        parameters.add(parameter1);
+        parameters.add(parameter2);
+        model.addAttribute("parameters", parameters);
 
 
         return "API5.html";
@@ -75,12 +82,10 @@ public class MainController {
 //        1. 화면에 뿌려주삼
     }
 
-//    @GetMapping(value = "/API5", produces = {MediaType.APPLICATION_JSON_VALUE})
-//    @ResponseBody
-//    public List<ParameterEntity> getlist() {
-//        return parameterRepository.findAll();
-//    }
-
-//    @GetMapping("/API5")
-//    public String findAllByConditon(Model model, )
+    @GetMapping(value = "/API5/get", produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public List<ParameterEntity> getlist() {
+        return parameterRepository.findAll();
+    }
 }
+

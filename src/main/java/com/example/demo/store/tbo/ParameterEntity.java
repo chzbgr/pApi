@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class ParameterEntity {
     @Id
     private String NameEng;
+    private String id;
 
     @Column
     private String NameKor;
@@ -22,7 +23,8 @@ public class ParameterEntity {
 
 
     @Builder
-    public ParameterEntity(String NameEng, String NameKor, String type, String des) {
+    public ParameterEntity(String id, String NameEng, String NameKor, String type, String des) {
+        this.id = id;
         this.NameEng = NameEng;
         this.NameKor = NameKor;
         this.type = type;

@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <script type="text/javascript" src="../../assets/js/jquery-3.4.1.js"></script>
+    <title>parameter</title>
+    <style>
+        table {
+            width: 55%;
+            border: 1px solid #444444;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+        th, td {
+            border: 1px solid #444444;
+        }
+    </style>
+
+    <script>
+          $(function(){
+              $("#response").click(function(){
+                  $.ajax({
+                      type: 'GET' ,
+                      url: 'http://openapi.seoul.go.kr:8088/6f6a4a6747716c7337326b67596165/json/TbCorona19Vaccinestat/'+document.getElementById("0").value+"/"+document.getElementById("1").value
+                      , success: function(data) {
+                          $("#listResponse").html(JSON.stringify(data));
+                      }
+                       // , error: function (xhr, status, error) {alert(error); console.log("error")}
+                  });
+              })
+          });
+
+        // function showPopup() {
+        //     window.open("http://openapi.seoul.go.kr:8088/6f6a4a6747716c7337326b67596165/json/TbCorona19Vaccinestat/"+document.getElementById("0").value+"/"+document.getElementById("1").value, "response", "width=1000, height=800, left=100, top=50");
+        // }
+    </script>
+
 </head>
-<body>
-<h2>살려주세요...</h2>
+<body class="container">
+    <div class="title">
+        <h2>서울특별시 코로나 19 백신 예방접종 현황</h2>
+    </div>
+<br><br><br>
+
+    <table class="view">
+        <tr>
+            <th>컬럼명</th>
+            <th>옵션</th>
+            <th>항목설명</th>
+            <th>value</th>
+        </tr>
+        <tr th:each="parameter, iter : ${parameters}">
+            <td th:text="${parameter.NameKor}"></td>
+            <td th:text="${parameter.type}"></td>
+            <td th:text="${parameter.des}"></td>
+            <td> <input th:id="${iter.index}" type="text" style="width:98%; border:0;"></td>
+        </tr>
+    </table>
 </body>
+<input type="button" id="response" value="미리보기"/> <!--onclick="showPopup()"/>-->
+<p id="listResponse"></p>
 </html>
+
+
+<!--table {-->
+<!--border-collapse: separate;-->
+<!--border-spacing: 0 10px;-->
+<!--}-->
+
+
+
+
+
+<!--    <a th:href="@{/detail}"><li th:value="${}"><span th:text>text(o) value(x)<span>서울특별시 코로나19 확진자 발생동향</li></a>-->
+
+

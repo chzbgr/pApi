@@ -4,7 +4,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
 @Entity
@@ -12,8 +15,7 @@ import javax.persistence.*;
 @Table(name = "API")
 public class ApiEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @Column
     private String url;
@@ -22,12 +24,12 @@ public class ApiEntity {
     private String apiKor;
 
     @Builder
-    public ApiEntity(String url, String ServiceKey, String des, String apiKor) {
+    public ApiEntity(String id, String url, String ServiceKey, String des, String apiKor) {
+        this.id = id;
         this.url = url;
         this.ServiceKey = ServiceKey;
         this.des = des;
         this.apiKor = apiKor;
-
     }
 
     // API Class 형태에서 ApiEntity 로 변환

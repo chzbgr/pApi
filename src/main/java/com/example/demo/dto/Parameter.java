@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class Parameter {
+    private String id;
     private String NameEng;
     private String NameKor;
     private String type;
@@ -13,6 +14,7 @@ public class Parameter {
 
     public ParameterEntity toEntity() {
         return ParameterEntity.builder()
+                .id(id)
                 .NameEng(NameEng)
                 .NameKor(NameKor)
                 .type(type)
@@ -20,3 +22,12 @@ public class Parameter {
                 .build();
     }
 }
+
+//class getPar {
+//}
+//
+//class setPar {
+//}
+
+
+
