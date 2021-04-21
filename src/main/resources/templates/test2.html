@@ -2,9 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <html lang="en">
 <head>
+    <script type="text/javascript" src="../../assets/js/jquery-3.4.1.js"></script>
     <meta charset="UTF-8">
     <title>입력</title>
 </head>
+
 <body>
 <div>
   <h2> <보건복지부_코로나19 감염_현황> </h2>
@@ -16,15 +18,18 @@
         <th>항목설명</th>
         <th>값을 입력하세요</th>
     </tr>
-      <tr th:each="parameters: ${parameters}">
-          <td th:text="${parameters.Api_Kor}"></td>
-          <td th:text="${parameters.Api_Eng}"></td>
-          <td th:text="${parameters.Option}"></td>
-          <td th:text="${parameters.Sample}"></td>
-          <td th:text="${parameters.des}"></td>
-          <td input type="text" th:value="${parameters}"></td>
+      <tr th:each="parameter, iter: ${parameters}">
+          <td th:text="${parameter.Api_Kor}"></td>
+          <td th:text="${parameter.Api_Eng}"></td>
+          <td th:text="${parameter.Option}"></td>
+          <td th:text="${parameter.Sample}"></td>
+          <td th:text="${parameter.des}"></td>
+          <td><input th:id="${iter.index}"type="text" ></td>
       </tr>
   </table>
+    <button onclick="location.href=''">미리보기</button>
+
+
 </div>
 
 </body>
