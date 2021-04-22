@@ -1,31 +1,28 @@
 package com.example.demo.store.tbo.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Data
-@Entity(name = "API_LIST")
+@Entity
 @Getter
-@Table
+@Table(name="API_LIST")
 public class ApiListEntity {
 
-
     @Id
+    @Column(name = "API_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String apiId;
 
-    @Column
+    @Column(name = "API_URL")
     private String apiUrl;
 
-    @Column
+    @Column(name = "SERVICE_KEY")
     private String serviceKey;
 
-    @Column
+    @Column(name = "API_KOR")
     private String apiKor;
 
     @Builder

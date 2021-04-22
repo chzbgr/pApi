@@ -1,13 +1,14 @@
 package com.example.demo.dto;
 
 
-import com.example.demo.store.tbo.domain.ApiListEntity;
+
 import com.example.demo.store.tbo.domain.ParameterListEntity;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 
 @Data
+@NoArgsConstructor
 public class ParamList {
 
     private String apiId;

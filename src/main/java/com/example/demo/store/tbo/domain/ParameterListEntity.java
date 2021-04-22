@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-
+@Table(name="PARAMETER_LIST")
 @IdClass(ParameterEntityKey.class)
 public class ParameterListEntity {
 

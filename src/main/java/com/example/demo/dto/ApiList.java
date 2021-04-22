@@ -1,12 +1,10 @@
 package com.example.demo.dto;
 
 import com.example.demo.store.tbo.domain.ApiListEntity;
-import com.example.demo.store.tbo.domain.ParameterListEntity;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Column;
 
 @Getter
 @Setter

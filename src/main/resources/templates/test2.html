@@ -11,19 +11,19 @@
 <div>
   <h2> <보건복지부_코로나19 감염_현황> </h2>
     <table border=2>
-        <th>항목명(국문)</th>
-        <th>항목명(영문)</th>
-        <th>항목구분</th>
-        <th>샘플데이터</th>
-        <th>항목설명</th>
+        <th>API_번호</th>
+        <th>변수명</th>
+        <th>타입</th>
+        <th>섦명</th>
+        <th>값_설명</th>
         <th>값을 입력하세요</th>
     </tr>
-      <tr th:each="parameter, iter: ${parameters}">
-          <td th:text="${parameter.Api_Kor}"></td>
-          <td th:text="${parameter.Api_Eng}"></td>
-          <td th:text="${parameter.Option}"></td>
-          <td th:text="${parameter.Sample}"></td>
-          <td th:text="${parameter.des}"></td>
+      <tr th:each="params, iter: ${params}">
+          <td th:text="${params.ApiId}"></td>
+          <td th:text="${params.ParameterName}"></td>
+          <td th:text="${params.ParameterType}"></td>
+          <td th:text="${params.ParameterDes}"></td>
+          <td th:text="${params.ValueDes}"></td>
           <td><input th:id="${iter.index}"type="text" ></td>
       </tr>
   </table>
