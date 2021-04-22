@@ -1,12 +1,21 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.Api;
+import com.example.demo.dto.Parameter;
 import com.example.demo.store.repository.ApiRepository;
+import com.example.demo.store.repository.ParameterRepository;
 import com.example.demo.store.tbo.ApiEntity;
+import com.example.demo.store.tbo.ParameterEntity;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +27,58 @@ public class MainController {
     @Autowired
     private ApiRepository apiRepository;
 
-    @GetMapping("/start")
-    public String start() {
+    @Autowired
+    private ParameterRepository parameterRepository;
 
+    @GetMapping("/start")
+    public String start(Model model) {
+
+        List<ApiEntity> apis = apiRepository.findAll();
+        List<Api> apiList = new ArrayList<>();
+
+        for (int i=0; i<apis.size(); i++){
+            Api api = new Api();
+            api.setApiId(apis.get(i).getApiId());
+            api.setApiKor(apis.get(i).getApiKor());
+            api.setApiUrl(apis.get(i).getApiUrl());
+            api.setApiUrl(apis.get(i).getServiceKey());
+            apiList.add(api);
+        }
+        log.info(apiList.toString());
+        model.addAttribute("apiList", apiList);
+        return "main";
+    }
+
+    @PostMapping("/api")
+    @ResponseBody
+    public String request(@RequestParam("apiId") String apiId, Model model) {
+        System.out.println(apiId);
+//        ModelAndView mav = new ModelAndView();
+
+        List<ParameterEntity> parameterEntityList = parameterRepository.findAllByApiId(apiId);
+        List<Parameter> parameterList = new ArrayList<>();
+
+        for (ParameterEntity entityParameter : parameterEntityList) {
+            Parameter dtoParameter = new Parameter();
+            dtoParameter.setApiId(entityParameter.getApiId());
+            dtoParameter.setParameterName(entityParameter.getParameterName());
+            dtoParameter.setParameterDes(entityParameter.getParameterDes());
+            dtoParameter.setParameterType(entityParameter.getParameterType());
+            dtoParameter.setValueDes(entityParameter.getValueDes());
+            parameterList.add(dtoParameter);
+        }
+
+
+
+        //model.addAttribute("data", parameterList);
+    //        mav.addObject("parameterList", parameterList);
+//        mav.setViewName("api4");
+//        mav.addAttribute("parameterList", parameterList);
 
         return "start";
     }
+
+
 
 
 //    @GetMapping("/api4")

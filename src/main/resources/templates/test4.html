@@ -17,9 +17,6 @@
 <!--    }-->
 <!--</script>-->
 
-<script>
-
-</script>
 <body>
 <h3>서울시 코로나19 확진자 현황</h3>
 <p>요청변수 입력</p>
@@ -31,7 +28,12 @@
             <th>des</th>
             <th>value</th>
         </tr>
-
+        <tr th:each="parameters: ${parameters}">
+            <td th:text="${parameters.nameKor}"></td>
+            <td th:text="${parameters.type}"></td>
+            <td th:text="${parameters.des}"></td>
+            <td><input type="text" class="form-control" th:name="${parameters.nameEng}"></td>
+        </tr>
     </table>
     <button type="submit">요청</button>
 </form>

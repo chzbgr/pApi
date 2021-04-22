@@ -18,13 +18,17 @@ import javax.persistence.*;
 public class ParameterEntity {
 
     @Id
+    @Column(name = "PARAMETER_NAME")
     private String parameterName;
     @Id
+    @Column(name = "API_ID")
     private String apiId;
 
-    @Column
+    @Column(name = "PARAMETER_DES")
     private String parameterDes;
+    @Column(name = "PARAMETER_TYPE")
     private String parameterType;
+    @Column(name = "VALUE_DES")
     private String valueDes;
 
 
