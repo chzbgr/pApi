@@ -15,11 +15,14 @@ import javax.persistence.Table;
 @Table(name = "API_LIST")
 public class ApiEntity {
     @Id
+    @Column(name = "API_ID")
     private String apiId;
 
-    @Column
+    @Column(name = "API_URL")
     private String apiUrl;
+    @Column(name = "SERVICE_KEY")
     private String serviceKey;
+    @Column(name = "API_KOR")
     private String apiKor;
 
     @Builder

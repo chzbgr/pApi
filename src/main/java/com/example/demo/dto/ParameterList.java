@@ -2,6 +2,7 @@ package com.example.demo.dto;
 
 import com.example.demo.store.tbo.ParameterEntity;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Data

@@ -3,6 +3,7 @@ package com.example.demo.dto;
 
 import com.example.demo.store.tbo.ApiEntity;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
