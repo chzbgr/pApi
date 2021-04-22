@@ -1,30 +1,28 @@
 package com.example.demo.dto;
 
 
-
-import com.example.demo.store.tbo.domain.ParamEntity;
+import com.example.demo.store.tbo.domain.ApiListEntity;
+import com.example.demo.store.tbo.domain.ParameterListEntity;
 import lombok.Data;
+
+import javax.persistence.Column;
 
 @Data
 public class ParamList {
 
-    private String Service_Key;
-    private String Api_Kor;
-    private String des;
-    private String Url;
-    private boolean Option;
-    private String sample;
-    private String api_Eng;
+    private String apiId;
+    private String parameterName;
+    private String parameterType;
+    private String parameterDes;
+    private String valueDes;
 
-    public ParamEntity toEntity() {
-        return ParamEntity.builder()
-                .Service_Key(Service_Key)
-                .api_Kor(Api_Kor)
-                .des(des)
-                .url(Url)
-                .Option(Option)
-                .sample(sample)
-                .api_Eng(api_Eng)
+    public ParameterListEntity toEntity() {
+        return ParameterListEntity.builder()
+                .apiId(apiId)
+                .parameterName(parameterName)
+                .parameterType(parameterType)
+                .parameterDes(parameterDes)
+                .valueDes(valueDes)
                 .build();
     }
 
