@@ -6,26 +6,26 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import java.lang.reflect.ParameterizedType;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Data
 public class Parameter {
-    private String nameKor;
-    private String nameEng;
-    private String des;
-    private String type;
-    private String id;
+    private String parameterName;
+    private String apiId;
+    private String parameterDes;
+    private String parameterType;
+    private String valueDes;
 
+    @Builder
     public ParameterEntity toEntity() {
         return ParameterEntity.builder()
-                .nameEng(nameEng)
-                .nameKor(nameKor)
-                .type(type)
-                .des(des)
-                .id(id)
+                .parameterName(parameterName)
+                .apiId(apiId)
+                .parameterDes(parameterDes)
+                .parameterType(parameterType)
+                .valueDes(valueDes)
                 .build();
     }
 }

@@ -1,7 +1,6 @@
 package com.example.demo.store.tbo;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,21 +10,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tbl_api")
+@Table(name = "API_LIST")
 @Getter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class ApiEntity {
 
     @Id
-    private String id;
+    @Column(name = "API_ID")
+    private String apiId;
 
-    @Column
-    private String url;
+    @Column(name = "API_URL")
+    private String apiUrl;
+    @Column(name = "SERVICE_KEY")
     private String serviceKey;
-    private String des;
+    @Column(name = "API_KOR")
     private String apiKor;
-
 
 }

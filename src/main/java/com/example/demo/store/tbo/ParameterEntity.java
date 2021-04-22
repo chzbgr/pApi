@@ -1,31 +1,31 @@
 package com.example.demo.store.tbo;
 
+import com.example.demo.store.tbo.key.ParameterEntityKey;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "tbl_parameter")
-@Getter
 @Builder
+@Table(name = "PARAMETER_LIST")
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@IdClass(ParameterEntityKey.class)
 public class ParameterEntity {
 
     @Id
-    private String nameEng;
-    private String id;
+    private String parameterName;
+    @Id
+    private String apiId;
 
     @Column
-    private String nameKor;
-    private String type;
-    private String des;
+    private String parameterDes;
+    private String parameterType;
+    private String valueDes;
+
 
 }

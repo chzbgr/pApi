@@ -12,11 +12,10 @@ import java.util.List;
 @Data
 public class Api {
 
-    private String id;
-    private String name;
+    private String apiId;
+    private String apiKor;
     private String serviceKey;
-    private String url;
-    private String des;
+    private String apiUrl;
     private List<Object> resultApi;
     private List<Parameter> listPar;
 
