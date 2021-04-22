@@ -12,27 +12,22 @@ import javax.persistence.Table;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "API")
+@Table(name = "API_LIST")
 public class ApiEntity {
     @Id
-    private String id;
+    private String apiId;
 
     @Column
-    private String url;
-    private String ServiceKey;
-    private String des;
+    private String apiUrl;
+    private String serviceKey;
     private String apiKor;
 
     @Builder
-    public ApiEntity(String id, String url, String ServiceKey, String des, String apiKor) {
-        this.id = id;
-        this.url = url;
-        this.ServiceKey = ServiceKey;
-        this.des = des;
+    public ApiEntity(String apiId, String apiUrl, String serviceKey, String apiKor) {
+        this.apiId = apiId;
+        this.apiUrl = apiUrl;
+        this.serviceKey = serviceKey;
         this.apiKor = apiKor;
     }
-
-    // API Class 형태에서 ApiEntity 로 변환
-//    sdfdfdfdfdf 여기서 코딩하세용...
 
 }
