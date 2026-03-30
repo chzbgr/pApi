@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>서울시 코로나19 확진자 현황</title>
+</head>
+
+<!--<script src="/static/assets/js/jquery-3.4.1.js"></script>-->
+<!--<script>-->
+<!--    function onRequest() {-->
+<!--        var startIndex=document.getElementById('START_INDEX').value;-->
+<!--        var endIndex=document.getElementById('END_INDEX').value;-->
+<!--        var corona19DisplayYn=document.getElementById('CORONA19_DISPLAY_YN').value;-->
+
+
+
+<!--    }-->
+<!--</script>-->
+
+<body>
+<h3>서울시 코로나19 확진자 현황</h3>
+<p>요청변수 입력</p>
+<form th:action="@{/api4/request}" method="post">
+    <table border="1">
+        <tr>
+            <th>nameKor</th>
+            <th>type</th>
+            <th>des</th>
+            <th>value</th>
+        </tr>
+        <tr th:each="parameters: ${parameters}">
+            <td th:text="${parameters.nameKor}"></td>
+            <td th:text="${parameters.type}"></td>
+            <td th:text="${parameters.des}"></td>
+            <td><input type="text" class="form-control" th:name="${parameters.nameEng}"></td>
+        </tr>
+    </table>
+    <button type="submit">요청</button>
+</form>
+
+<!--    <button type="button" onclick="onRequest()">요청</button>-->
+
+</body>
+</html>

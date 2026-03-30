@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Api list</title>
+    <script type="text/javascript" src="../../assets/js/jquery-3.4.1.js"></script>
+</head>
+<script>
+    function f(data) {
+        console.log(data);
+        $.ajax({
+            url: 'http://localhost:8080/api',
+            type: 'post',
+            dataType: 'html',
+            data: {apiId: data},
+            success:
+                function (data) {
+                    console.log("성공");
+                    console.log(data);
+                }
+        });
+    }
+
+
+</script>
+<body>
+<table border="1">
+    <tr>
+        <th>Api Id</th>
+        <th>Api 명</th>
+    </tr>
+    <tr th:each="apiList: ${apiList}">
+        <td><a th:text="${apiList.apiId}" th:value="${apiList.apiId}" onclick="f(this.getAttribute('value'))" th:href="@{/api}"></a></td>
+        <td><a th:text="${apiList.apiKor}"></a></td>
+    </tr>
+</table>
+</body>
+</html>
